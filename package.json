@@ -2,15 +2,31 @@
   "name": "sneaker_site",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "d3": "^6.3.1",
+    "express": "^4.17.1",
+    "jQuery": "^1.7.4",
+    "jsdom": "^16.4.0",
+    "nodemon": "^2.0.7",
     "sneaks-api": "^1.1.1",
+    "socket.io": "^3.0.4",
     "stockx-api": "^1.0.9"
+  },
+  "devDependencies": {
+    "eslint": "^7.17.0",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-promise": "^4.2.1",
+    "prettier": "^2.2.1"
   }
 }

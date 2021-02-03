@@ -1,0 +1,29 @@
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+/* .row {
+  border: 2px solid;
+} */
+
+.col-sm-3 {
+  border: 1px solid lightgrey;
+  border-left-style: none;
+  padding: 25px;
+}
+
+.col-sm-4 {
+  border: 1px solid lightgrey;
+  padding: 15px 35px;
+  font-family: 'Avenir';
+}
+
+.col-sm-5 {
+  border: 1px solid lightgrey;
+  border-right-style: none;
+}
+
+#image {
+  text-align: center;
+}

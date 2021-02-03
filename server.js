@@ -1,15 +1,16 @@
-var http = require('http');
-var fs = require('fs');
+const express = require('express');
+const bodyParser = require('body-parser');
+const app = express();
+const http = require('http').Server(app);
+const StockXAPI = require('stockx-api');
+const stockX = new StockXAPI();
 
-const PORT=8080; 
+const PORT = 8080;
 
-fs.readFile('./index.html', function (err, html) {
+app.use(express.static('public'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
-    if (err) throw err;    
-
-    http.createServer(function(request, response) {  
-        response.writeHeader(200, {"Content-Type": "text/html"});  
-        response.write(html);  
-        response.end();  
-    }).listen(PORT);
+var server = http.listen(PORT, () => {
+  console.log('server is listening on port', server.address().port);
 });
