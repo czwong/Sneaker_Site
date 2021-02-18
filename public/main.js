@@ -46,11 +46,7 @@ function rowCol_constructor(data) {
   // Create Title
   col_4.append('h4').html(data.shoeName);
 
-  var nav_tabs = col_4
-    .append('div')
-    .attr('class', 'row')
-    .append('ul')
-    .attr('class', 'nav nav-tabs');
+  var nav_tabs = col_4.append('ul').attr('class', 'nav nav-tabs');
 
   var nav_tabs_item1 = nav_tabs
     .append('li')
@@ -84,6 +80,15 @@ function rowCol_constructor(data) {
   nav_content2.html(`<b>Colorway:</b> ${data.colorway}`);
 }
 
+// function tableConstructor(id) {
+//   var row = d3.select('body > div.container-fluid').append('div').attr('class', 'row');
+//   var table = row.append('table').attr('class', 'table');
+
+//   $.get(`https://sneaks-api.azurewebsites.net/id/${id}/prices`).then((data) => {
+//     console.log(Object.keys(data.resellPrices));
+//   });
+// }
+
 async function search(url) {
   var body = document.getElementById('container');
   let p = await checkGetRequest(url);
@@ -108,10 +113,24 @@ $(() => {
   $('#form').submit((event) => {
     event.preventDefault();
     var input = $('input').val();
-
     var url = `https://sneaks-api.azurewebsites.net/search/${input}`;
 
-    search(url);
+    $.ajax({
+      url: url,
+      beforeSend: () => {
+        $('#loading').show();
+        $('.spinner-border').show();
+        $('#container').hide();
+      },
+      complete: async () => {
+        await search(url);
+
+        $('#loading').hide();
+        $('.spinner-border').hide();
+        $('#container').show();
+      },
+    });
+    return false;
   });
 
   var url = `https://sneaks-api.azurewebsites.net/search/yeezy`;
@@ -122,5 +141,9 @@ $(() => {
     });
 
     tab_contents();
+
+    // var $el = $('div.row');
+    // var elWidth = $el.outerWidth();
+    // var elWidthMargin = $el.outerWidth(true);
   });
 });

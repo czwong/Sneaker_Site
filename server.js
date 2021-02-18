@@ -4,6 +4,7 @@ const app = express();
 const http = require('http').Server(app);
 const StockXAPI = require('stockx-api');
 const stockX = new StockXAPI();
+const got = require('got');
 
 const PORT = 8080;
 
